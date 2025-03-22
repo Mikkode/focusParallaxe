@@ -4,7 +4,7 @@ Une landing page moderne et immersive pour un coach business fictif, avec des ef
 
 ## Stack Technique
 
-- Next.js 14 (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - TailwindCSS
 - @react-spring/parallax
@@ -13,7 +13,6 @@ Une landing page moderne et immersive pour un coach business fictif, avec des ef
 
 ## Fonctionnalités
 
-- Effets de parallaxe au scroll
 - Animations et transitions fluides
 - Design responsive
 - Sections interactives

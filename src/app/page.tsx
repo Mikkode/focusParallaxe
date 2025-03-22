@@ -10,23 +10,8 @@ import { Navigation } from '@/components/Navigation'
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
   
   const sections = useRef<HTMLDivElement[]>([])
-  
-  // Détection du mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile)
-    }
-  }, [])
   
   // Observer pour détecter la section visible
   useEffect(() => {
@@ -44,12 +29,15 @@ export default function Home() {
       { threshold: 0.3 }
     )
     
-    sections.current.forEach((section) => {
+    // Copier la référence actuelle pour éviter les problèmes de nettoyage
+    const currentSections = sections.current
+    
+    currentSections.forEach((section) => {
       if (section) observer.observe(section)
     })
     
     return () => {
-      sections.current.forEach((section) => {
+      currentSections.forEach((section) => {
         if (section) observer.unobserve(section)
       })
     }
@@ -59,12 +47,17 @@ export default function Home() {
     sections.current[index]?.scrollIntoView({ behavior: 'smooth' })
   }
   
+  // Fonction pour stocker les références des sections
+  const setSectionRef = (index: number) => (el: HTMLDivElement | null) => {
+    if (el) sections.current[index] = el
+  }
+  
   return (
     <main className="w-full">
       <Navigation currentPage={currentSection} scrollTo={scrollTo} />
       
       <div 
-        ref={(el) => el && (sections.current[0] = el)} 
+        ref={setSectionRef(0)} 
         data-index={0}
         className="min-h-screen relative"
       >
@@ -72,7 +65,7 @@ export default function Home() {
       </div>
       
       <div 
-        ref={(el) => el && (sections.current[1] = el)} 
+        ref={setSectionRef(1)} 
         data-index={1}
         className="min-h-screen bg-gradient-to-b from-white to-sky-50 py-16"
       >
@@ -80,7 +73,7 @@ export default function Home() {
       </div>
       
       <div 
-        ref={(el) => el && (sections.current[2] = el)} 
+        ref={setSectionRef(2)} 
         data-index={2}
         className="min-h-screen bg-gradient-to-b from-sky-50 to-slate-50 py-16"
       >
@@ -88,7 +81,7 @@ export default function Home() {
       </div>
       
       <div 
-        ref={(el) => el && (sections.current[3] = el)} 
+        ref={setSectionRef(3)} 
         data-index={3}
         className="min-h-screen bg-white py-16"
       >
@@ -96,7 +89,7 @@ export default function Home() {
       </div>
       
       <div 
-        ref={(el) => el && (sections.current[4] = el)} 
+        ref={setSectionRef(4)} 
         data-index={4}
         className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-16"
       >
