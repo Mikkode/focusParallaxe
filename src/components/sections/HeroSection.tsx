@@ -38,10 +38,10 @@ export const HeroSection = ({ scrollTo }: HeroSectionProps) => {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-sky-500 opacity-10 blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-blue-500 opacity-10 blur-3xl"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 md:pt-0">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll opacity-0 transition-all duration-700 delay-100">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight mt-16 md:mt-0">
               Votre santé mérite une approche <span className="text-sky-400">innovante</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto">
@@ -52,14 +52,11 @@ export const HeroSection = ({ scrollTo }: HeroSectionProps) => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll opacity-0 transition-all duration-700 delay-300">
             <button 
               onClick={scrollTo}
-              className="px-8 py-4 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-colors flex items-center justify-center"
+              className="px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-colors"
             >
               Découvrir nos services
-              <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
             </button>
-            <button className="px-8 py-4 bg-transparent border border-white text-white hover:bg-white/10 font-medium rounded-lg transition-colors">
+            <button className="px-8 py-3 bg-transparent border border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors">
               Prendre rendez-vous
             </button>
           </div>

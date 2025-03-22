@@ -14,10 +14,12 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
   // Détection du défilement pour changer l'apparence du menu
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 10)
     }
     
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -59,7 +61,7 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
                   key={index}
                   onClick={() => scrollTo(item.page)}
                   className={`text-sm font-medium py-2 cursor-pointer ${
-                    currentPage === item.page 
+                    currentPage === Math.floor(item.page) 
                       ? 'text-sky-500' 
                       : isScrolled 
                         ? 'text-slate-700 hover:text-sky-500' 
@@ -106,7 +108,7 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
                     setIsMenuOpen(false)
                   }}
                   className={`text-sm font-medium py-2 ${
-                    currentPage === item.page ? 'text-sky-500' : 'text-slate-700 hover:text-sky-500'
+                    currentPage === Math.floor(item.page) ? 'text-sky-500' : 'text-slate-700 hover:text-sky-500'
                   }`}
                 >
                   {item.label}

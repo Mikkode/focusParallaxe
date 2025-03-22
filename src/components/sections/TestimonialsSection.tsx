@@ -48,20 +48,16 @@ export const TestimonialsSection = () => {
   ]
 
   return (
-    <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
-      {/* Éléments décoratifs */}
-      <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-gradient-radial from-blue-100 to-transparent opacity-40 blur-lg pointer-events-none animate-float-slow"></div>
-      <div className="absolute bottom-20 left-10 w-16 h-16 rounded-full bg-gradient-radial from-sky-100 to-transparent opacity-30 blur-lg pointer-events-none animate-float-medium"></div>
-      
-      <div className="text-center mb-16 animate-on-scroll opacity-0 transition-all duration-700 delay-100">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ce que disent nos patients</h2>
+    <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div className="text-center mb-12 animate-on-scroll opacity-0 transition-all duration-700 delay-100">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Témoignages</h2>
         <div className="w-20 h-1 bg-sky-500 mx-auto mb-6"></div>
         <p className="text-slate-600 max-w-2xl mx-auto">
           Découvrez comment Carrot Santé a transformé l&apos;expérience de santé de nos patients à travers la France.
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
         {testimonials.map((testimonial, index) => (
           <div 
             key={index} 
@@ -93,7 +89,7 @@ export const TestimonialsSection = () => {
         ))}
       </div>
       
-      <div className="mt-20 text-center animate-on-scroll opacity-0 transition-all duration-700 delay-500">
+      <div className="mt-16 text-center animate-on-scroll opacity-0 transition-all duration-700 delay-500">
         <h3 className="text-2xl font-semibold text-slate-800 mb-6">Rejoignez plus de 10 000 patients satisfaits</h3>
         <button className="px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-all duration-300 inline-flex items-center">
           <span>Commencer maintenant</span>
