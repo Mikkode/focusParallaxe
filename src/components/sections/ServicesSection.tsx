@@ -67,7 +67,7 @@ export const ServicesSection = () => {
     },
     {
       title: "Accessible",
-      description: "Nos services sont disponibles 24h/24, 7j/7, depuis n'importe quel appareil connecté à internet.",
+      description: "Des services disponibles 24h/24, 7j/7, depuis n'importe où, pour une médecine qui s'adapte à votre vie.",
       icon: (
         <svg className="w-6 h-6 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -75,20 +75,20 @@ export const ServicesSection = () => {
       )
     },
     {
-      title: "Sécurisé",
-      description: "Vos données médicales sont protégées par les standards de sécurité les plus élevés et strictement confidentielles.",
+      title: "Innovant",
+      description: "Nous intégrons les dernières technologies pour offrir des soins de qualité supérieure et une expérience fluide.",
       icon: (
         <svg className="w-6 h-6 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       )
     },
     {
-      title: "Innovant",
-      description: "Nous intégrons les dernières avancées technologiques pour améliorer constamment la qualité de nos soins.",
+      title: "Préventif",
+      description: "Notre approche se concentre sur la prévention et le maintien d'une bonne santé, pas seulement le traitement des maladies.",
       icon: (
         <svg className="w-6 h-6 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
       )
     }
@@ -129,7 +129,7 @@ export const ServicesSection = () => {
         <div className="text-center mb-10 animate-on-scroll opacity-0 transition-all duration-700 delay-300">
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Notre approche</h3>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Chez MediCare, nous croyons qu'une médecine moderne doit être à la fois humaine et technologique.
+            Chez Carrot Santé, nous croyons qu'une médecine moderne doit être à la fois humaine et technologique.
             Voici les principes qui guident notre pratique quotidienne.
           </p>
         </div>
@@ -155,7 +155,7 @@ export const ServicesSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-2/3 mb-6 md:mb-0">
             <h3 className="text-xl font-semibold text-slate-800 mb-2">Prêt à prendre soin de votre santé différemment ?</h3>
-            <p className="text-slate-600">Rejoignez les milliers de patients qui font confiance à MediCare pour leur suivi médical.</p>
+            <p className="text-slate-600">Rejoignez les milliers de patients qui font confiance à Carrot Santé pour leur suivi médical.</p>
           </div>
           <button className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-colors">
             Essayer gratuitement

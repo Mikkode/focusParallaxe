@@ -30,19 +30,19 @@ export const TestimonialsSection = () => {
       name: "Sophie Martin",
       role: "Mère de famille",
       image: "https://randomuser.me/api/portraits/women/44.jpg",
-      content: "MediCare a transformé notre façon de gérer la santé familiale. Plus besoin de prendre des rendez-vous des semaines à l'avance ou de se déplacer pour des consultations de routine. Tout est accessible depuis notre domicile, avec un suivi personnalisé pour chaque membre de la famille."
+      content: "Carrot Santé a transformé notre façon de gérer la santé familiale. Plus besoin de prendre des rendez-vous des semaines à l'avance ou de se déplacer pour des consultations de routine. Tout est accessible depuis notre domicile, avec un suivi personnalisé pour chaque membre de la famille."
     },
     {
       name: "Thomas Dubois",
       role: "Entrepreneur",
       image: "https://randomuser.me/api/portraits/men/32.jpg",
-      content: "Avec mon emploi du temps chargé, je négligeais souvent ma santé. MediCare m'a permis de rester en contact régulier avec mon médecin, même lors de mes déplacements professionnels. Le suivi numérique est particulièrement utile pour surveiller mon stress et mon sommeil."
+      content: "Avec mon emploi du temps chargé, je négligeais souvent ma santé. Carrot Santé m'a permis de rester en contact régulier avec mon médecin, même lors de mes déplacements professionnels. Le suivi numérique est particulièrement utile pour surveiller mon stress et mon sommeil."
     },
     {
       name: "Émilie Leclerc",
       role: "Sportive amateur",
       image: "https://randomuser.me/api/portraits/women/68.jpg",
-      content: "Suite à une blessure, j'avais besoin d'un suivi régulier avec différents spécialistes. MediCare a coordonné tous mes soins et m'a permis de consulter facilement kinésithérapeute et médecin du sport. Leur approche préventive m'aide maintenant à éviter de nouvelles blessures."
+      content: "Suite à une blessure, j'avais besoin d'un suivi régulier avec différents spécialistes. Carrot Santé a coordonné tous mes soins et m'a permis de consulter facilement kinésithérapeute et médecin du sport. Leur approche préventive m'aide maintenant à éviter de nouvelles blessures."
     }
   ]
 
@@ -56,7 +56,7 @@ export const TestimonialsSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ce que disent nos patients</h2>
         <div className="w-20 h-1 bg-sky-500 mx-auto mb-6"></div>
         <p className="text-slate-600 max-w-2xl mx-auto">
-          Découvrez comment MediCare a transformé l'expérience de santé de nos patients à travers la France.
+          Découvrez comment Carrot Santé a transformé l'expérience de santé de nos patients à travers la France.
         </p>
       </div>
       

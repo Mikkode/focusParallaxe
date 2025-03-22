@@ -58,7 +58,7 @@ export const ContactSection = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </span>
-              contact@medicare.fr
+              contact@carrotsante.fr
             </p>
           </div>
           
@@ -104,7 +104,7 @@ export const ContactSection = () => {
       </div>
       
       <div className="pt-8 border-t border-slate-800 text-center text-slate-400 mt-auto animate-on-scroll opacity-0 transition-all duration-700 delay-500">
-        <p>© 2025 MediCare. Tous droits réservés.</p>
+        <p>© 2025 Carrot Santé. Tous droits réservés.</p>
       </div>
     </div>
   )

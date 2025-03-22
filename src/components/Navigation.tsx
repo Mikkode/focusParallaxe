@@ -41,36 +41,37 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <svg className="h-10 w-10 text-sky-500" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5Z" stroke="currentColor" strokeWidth="2" />
-              <path d="M20 12V20L26 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            <span className={`ml-2 text-xl font-bold ${
-              isScrolled || isMenuOpen 
-                ? 'text-slate-900' 
-                : isWhiteBackground ? 'text-slate-900' : 'text-white'
-            }`}>MediCare</span>
-          </div>
-          
-          {/* Menu desktop */}
-          <div className="hidden md:flex space-x-8">
-            {menuItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(item.page)}
-                className={`text-sm font-medium transition-colors ${
-                  currentPage === item.page 
-                    ? 'text-sky-500' 
-                    : isScrolled || isMenuOpen 
-                      ? 'text-slate-700 hover:text-sky-500' 
-                      : isWhiteBackground 
+            <div className="flex items-center mr-4">
+              <svg className="w-8 h-8 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+              <span className={`ml-2 text-xl font-bold ${
+                isScrolled || isMenuOpen 
+                  ? 'text-slate-900' 
+                  : isWhiteBackground ? 'text-slate-900' : 'text-white'
+              }`}>Carrot Santé</span>
+            </div>
+            
+            {/* Menu desktop */}
+            <div className="hidden md:flex space-x-8">
+              {menuItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(item.page)}
+                  className={`text-sm font-medium py-2 ${
+                    currentPage === item.page 
+                      ? 'text-sky-500' 
+                      : isScrolled 
                         ? 'text-slate-700 hover:text-sky-500' 
-                        : 'text-white hover:text-sky-100'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+                        : isWhiteBackground 
+                          ? 'text-slate-700 hover:text-sky-500' 
+                          : 'text-white hover:text-sky-100'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
           
           {/* Bouton menu mobile */}
