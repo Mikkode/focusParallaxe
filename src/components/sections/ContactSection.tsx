@@ -2,8 +2,8 @@
 
 export const ContactSection = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col min-h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center flex-grow">
         <div>
           <h2 className="text-4xl font-bold mb-6 text-white">Contactez-nous</h2>
           <div className="w-20 h-1 bg-sky-500 mb-8"></div>
@@ -84,8 +84,8 @@ export const ContactSection = () => {
         </div>
       </div>
       
-      <div className="mt-16 pt-8 border-t border-slate-800 text-center text-slate-400">
-        <p>© 2023 VitaSanté. Tous droits réservés.</p>
+      <div className="pt-8 border-t border-slate-800 text-center text-slate-400 mt-auto">
+        <p>© 2025 VitaSanté. Tous droits réservés.</p>
       </div>
     </div>
   )
