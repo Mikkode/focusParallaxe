@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="40" rx="4" fill="white" fill-opacity="0.1" />
+    <path
+        d="M30 20C30 14.477 25.523 10 20 10C14.477 10 10 14.477 10 20C10 25.523 14.477 30 20 30C25.523 30 30 25.523 30 20Z"
+        fill="white" />
+    <path d="M40 15H60V17H40V15Z" fill="white" />
+    <path d="M40 19H70V21H40V19Z" fill="white" />
+    <path d="M40 23H55V25H40V23Z" fill="white" />
+</svg>
