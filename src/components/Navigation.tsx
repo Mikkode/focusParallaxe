@@ -58,7 +58,7 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
                 <button
                   key={index}
                   onClick={() => scrollTo(item.page)}
-                  className={`text-sm font-medium py-2 ${
+                  className={`text-sm font-medium py-2 cursor-pointer ${
                     currentPage === item.page 
                       ? 'text-sky-500' 
                       : isScrolled 
