@@ -10,36 +10,11 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { Navigation } from '@/components/Navigation'
 
-// Définition des styles CSS - palette moderne et minimaliste
-const styles = {
-  background: 'bg-slate-50 w-full h-full',
-  heading: 'text-slate-900 text-5xl md:text-6xl font-bold tracking-tight',
-  subheading: 'text-sky-600 text-2xl md:text-3xl font-medium',
-  paragraph: 'text-slate-600 text-lg leading-relaxed max-w-2xl',
-  card: 'p-6 rounded-xl shadow-sm bg-white border border-slate-100',
-  button: 'px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-colors',
-  secondaryButton: 'px-6 py-3 bg-white text-sky-500 border border-sky-500 font-medium rounded-lg hover:bg-sky-50 transition-colors',
-  section: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24',
-  pricingCard: 'p-8 rounded-xl shadow-sm bg-white border border-slate-100 flex flex-col h-full',
-  pricingHighlight: 'p-8 rounded-xl shadow-md bg-gradient-to-br from-sky-50 to-white border-2 border-sky-500 flex flex-col h-full relative',
-}
-
-// Helper pour centrer les éléments
-const alignCenter = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}
-
-// URLs d'images (utilisation d'images de placeholder pour l'exemple)
-const imageUrl = (name: string) => `https://images.unsplash.com/photo-${name}?auto=format&fit=crop&w=1200`
-
 export default function Home() {
   const parallaxRef = useRef<IParallax>(null!)
   const [currentPage, setCurrentPage] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
-
+  
   // Détection du mobile
   useEffect(() => {
     const checkMobile = () => {
@@ -60,24 +35,26 @@ export default function Home() {
       if (parallaxRef.current) {
         const scrollTop = parallaxRef.current.current / parallaxRef.current.space
         setCurrentPage(Math.round(scrollTop))
-        setScrollY(parallaxRef.current.current)
       }
     }
 
-    if (parallaxRef.current) {
-      parallaxRef.current.container.current?.addEventListener('scroll', handleScroll)
+    const currentParallax = parallaxRef.current
+    if (currentParallax && currentParallax.container.current) {
+      currentParallax.container.current.addEventListener('scroll', handleScroll)
     }
 
     return () => {
-      if (parallaxRef.current) {
-        parallaxRef.current.container.current?.removeEventListener('scroll', handleScroll)
+      if (currentParallax && currentParallax.container.current) {
+        currentParallax.container.current.removeEventListener('scroll', handleScroll)
       }
     }
   }, [])
 
   const scrollTo = (page: number) => {
-    parallaxRef.current.scrollTo(page)
-    setCurrentPage(page)
+    if (parallaxRef.current) {
+      parallaxRef.current.scrollTo(page)
+      setCurrentPage(page)
+    }
   }
   
   return (

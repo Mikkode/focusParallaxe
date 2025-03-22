@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect, useRef } from 'react'
-import { motion } from 'motion/react'
 
 export const PricingSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const cardRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)]
   
   useEffect(() => {
+    // Animation d'apparition au scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -20,6 +21,39 @@ export const PricingSection = () => {
     
     const animatedElements = sectionRef.current?.querySelectorAll('.animate-on-scroll')
     animatedElements?.forEach((el) => observer.observe(el))
+    
+    // Animation des cartes avec des classes CSS au lieu de Motion
+    cardRefs.forEach((ref, index) => {
+      if (ref.current) {
+        const element = ref.current
+        
+        // Utiliser setTimeout pour créer un délai d'animation
+        setTimeout(() => {
+          element.style.opacity = '1'
+          element.style.transform = 'translateY(0)'
+          element.style.transition = `opacity 0.5s ease, transform 0.5s ease`
+        }, 100 * index)
+      }
+    })
+    
+    // Animation au survol des cartes avec des gestionnaires d'événements classiques
+    cardRefs.forEach((ref) => {
+      if (ref.current) {
+        const element = ref.current
+        
+        element.addEventListener('mouseenter', () => {
+          element.style.transform = 'translateY(-10px)'
+          element.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)'
+          element.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'
+        })
+        
+        element.addEventListener('mouseleave', () => {
+          element.style.transform = 'translateY(0)'
+          element.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+          element.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'
+        })
+      }
+    })
     
     return () => {
       animatedElements?.forEach((el) => observer.unobserve(el))
@@ -75,27 +109,16 @@ export const PricingSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Nos Forfaits</h2>
         <div className="w-20 h-1 bg-sky-500 mx-auto mb-6"></div>
         <p className="text-slate-600 max-w-2xl mx-auto">
-          Des solutions adaptées à vos besoins et à votre budget. Tous nos forfaits incluent l'accès à notre plateforme de suivi médical.
+          Des solutions adaptées à vos besoins et à votre budget. Tous nos forfaits incluent l&apos;accès à notre plateforme de suivi médical.
         </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
         {plans.map((plan, index) => (
-          <motion.div 
+          <div 
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.5, 
-              delay: 0.1 * index,
-              ease: "easeOut"
-            }}
-            viewport={{ once: true }}
-            whileHover={{ 
-              y: -10,
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)",
-              transition: { duration: 0.3, ease: "easeOut" }
-            }}
+            ref={cardRefs[index]}
+            style={{ opacity: 0, transform: 'translateY(20px)' }}
             className={`${
               plan.highlighted 
                 ? "p-8 rounded-xl shadow-md bg-gradient-to-br from-sky-50 to-white border-2 border-sky-500 flex flex-col h-full relative" 
@@ -128,10 +151,7 @@ export const PricingSection = () => {
               ))}
             </ul>
             
-            <motion.button 
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+            <button 
               className={`${
                 plan.highlighted
                   ? "px-6 py-3 bg-sky-500 text-white font-medium rounded-lg hover:bg-sky-600 transition-all duration-300 w-full"
@@ -139,8 +159,8 @@ export const PricingSection = () => {
               }`}
             >
               Choisir ce forfait
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         ))}
       </div>
     </div>

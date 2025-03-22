@@ -45,7 +45,7 @@ export const HeroSection = ({ scrollTo }: HeroSectionProps) => {
               Votre santé mérite une approche <span className="text-sky-400">innovante</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto">
-              Carrot Santé révolutionne l'accès aux soins avec des services personnalisés, accessibles où que vous soyez.
+              Carrot Santé révolutionne l&apos;accès aux soins avec des services personnalisés, accessibles où que vous soyez.
             </p>
           </div>
           

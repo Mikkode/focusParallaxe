@@ -131,7 +131,7 @@ export const ServicesSection = () => {
         <div className="text-center mb-10 animate-on-scroll opacity-0 transition-all duration-700 delay-300">
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Notre approche</h3>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Chez Carrot Santé, nous croyons qu'une médecine moderne doit être à la fois humaine et technologique.
+            Chez Carrot Santé, nous croyons qu&apos;une médecine moderne doit être à la fois humaine et technologique.
             Voici les principes qui guident notre pratique quotidienne.
           </p>
         </div>
