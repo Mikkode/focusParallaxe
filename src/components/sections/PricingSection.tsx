@@ -11,7 +11,18 @@ export const PricingSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Ajouter une classe pour déclencher l'animation
             entry.target.classList.add('animate-fade-in')
+            
+            // Pour les cartes, ajouter une animation séquentielle
+            if (entry.target.classList.contains('pricing-card')) {
+              const index = entry.target.getAttribute('data-index')
+              const delay = index ? parseInt(index) * 150 : 0
+              
+              setTimeout(() => {
+                entry.target.classList.add('card-visible')
+              }, delay)
+            }
           }
         })
       },
@@ -21,8 +32,13 @@ export const PricingSection = () => {
     const animatedElements = sectionRef.current?.querySelectorAll('.animate-on-scroll')
     animatedElements?.forEach((el) => observer.observe(el))
     
+    // Observer spécifiquement les cartes
+    const cards = sectionRef.current?.querySelectorAll('.pricing-card')
+    cards?.forEach((el) => observer.observe(el))
+    
     return () => {
       animatedElements?.forEach((el) => observer.unobserve(el))
+      cards?.forEach((el) => observer.unobserve(el))
     }
   }, [])
 
@@ -79,20 +95,34 @@ export const PricingSection = () => {
         </p>
       </div>
       
+      <style jsx>{`
+        .pricing-card {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease;
+        }
+        
+        .card-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .pricing-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+      `}</style>
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
         {plans.map((plan, index) => (
           <div 
             key={index}
-            className={`
-              animate-on-scroll opacity-0 transform translate-y-4
-              transition-all duration-500 hover:-translate-y-2 hover:shadow-lg
-              ${index === 0 ? 'delay-200' : index === 1 ? 'delay-300' : 'delay-400'}
-              ${
-                plan.highlighted 
-                  ? "p-8 rounded-xl shadow-md bg-gradient-to-br from-sky-50 to-white border-2 border-sky-500 flex flex-col h-full relative" 
-                  : "p-8 rounded-xl shadow-sm bg-white border border-slate-100 flex flex-col h-full"
-              }
-            `}
+            data-index={index}
+            className={`pricing-card ${
+              plan.highlighted 
+                ? "p-8 rounded-xl shadow-md bg-gradient-to-br from-sky-50 to-white border-2 border-sky-500 flex flex-col h-full relative" 
+                : "p-8 rounded-xl shadow-sm bg-white border border-slate-100 flex flex-col h-full"
+            }`}
           >
             {plan.highlighted && (
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-sky-500 text-white px-4 py-1 rounded-full text-sm font-medium">
