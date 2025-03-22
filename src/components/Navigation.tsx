@@ -49,7 +49,7 @@ export const Navigation = ({ currentPage, scrollTo }: NavigationProps) => {
               isScrolled || isMenuOpen 
                 ? 'text-slate-900' 
                 : isWhiteBackground ? 'text-slate-900' : 'text-white'
-            }`}>VitaSanté</span>
+            }`}>MediCare</span>
           </div>
           
           {/* Menu desktop */}

@@ -1,6 +1,30 @@
 "use client"
 
+import { useEffect, useRef } from 'react'
+
 export const ServicesSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    
+    const animatedElements = sectionRef.current?.querySelectorAll('.animate-on-scroll')
+    animatedElements?.forEach((el) => observer.observe(el))
+    
+    return () => {
+      animatedElements?.forEach((el) => observer.unobserve(el))
+    }
+  }, [])
+
   const services = [
     {
       title: "Téléconsultation",
@@ -71,12 +95,17 @@ export const ServicesSection = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div className="text-center mb-16">
+    <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+      {/* Éléments décoratifs flottants */}
+      <div className="absolute top-20 right-10 w-16 h-16 rounded-full bg-blue-100 opacity-50 animate-float-slow pointer-events-none"></div>
+      <div className="absolute bottom-40 left-10 w-12 h-12 rounded-full bg-sky-100 opacity-40 animate-float-medium pointer-events-none"></div>
+      <div className="absolute top-1/2 right-1/4 w-8 h-8 rounded-full bg-cyan-100 opacity-30 animate-float-fast pointer-events-none"></div>
+      
+      <div className="text-center mb-16 animate-on-scroll opacity-0 transition-all duration-700 delay-100">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Nos Services</h2>
         <div className="w-20 h-1 bg-sky-500 mx-auto mb-6"></div>
         <p className="text-slate-600 max-w-2xl mx-auto">
-          Des solutions innovantes pour prendre soin de votre santé, où que vous soyez.
+          Des solutions de santé innovantes, accessibles et personnalisées pour prendre soin de vous au quotidien.
         </p>
       </div>
       
@@ -84,7 +113,8 @@ export const ServicesSection = () => {
         {services.map((service, index) => (
           <div 
             key={index} 
-            className="p-6 rounded-xl shadow-sm bg-white border border-slate-100 hover:shadow-md transition-shadow group"
+            className="p-6 rounded-xl shadow-sm bg-white border border-slate-100 hover:shadow-md transition-shadow group animate-on-scroll opacity-0 transition-all duration-700"
+            style={{ transitionDelay: `${150 + index * 100}ms` }}
           >
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky-100 text-sky-600 mb-6 group-hover:bg-sky-500 group-hover:text-white transition-colors">
               {service.icon}
@@ -96,17 +126,21 @@ export const ServicesSection = () => {
       </div>
       
       <div className="mt-20">
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 animate-on-scroll opacity-0 transition-all duration-700 delay-300">
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Notre approche</h3>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Chez VitaSanté, nous croyons qu'une médecine moderne doit être à la fois humaine et technologique.
+            Chez MediCare, nous croyons qu'une médecine moderne doit être à la fois humaine et technologique.
             Voici les principes qui guident notre pratique quotidienne.
           </p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
           {features.map((feature, index) => (
-            <div key={index} className="flex flex-col items-start p-5 rounded-lg hover:bg-sky-50 transition-colors">
+            <div 
+              key={index} 
+              className="flex flex-col items-start p-5 rounded-lg hover:bg-sky-50 transition-colors animate-on-scroll opacity-0 transition-all duration-700"
+              style={{ transitionDelay: `${400 + index * 100}ms` }}
+            >
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-sky-100 mb-4">
                 {feature.icon}
               </div>
@@ -117,11 +151,11 @@ export const ServicesSection = () => {
         </div>
       </div>
       
-      <div className="mt-20 bg-gradient-to-r from-sky-50 to-slate-50 p-8 rounded-xl">
+      <div className="mt-20 bg-gradient-to-r from-sky-50 to-slate-50 p-8 rounded-xl animate-on-scroll opacity-0 transition-all duration-700 delay-500">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-2/3 mb-6 md:mb-0">
             <h3 className="text-xl font-semibold text-slate-800 mb-2">Prêt à prendre soin de votre santé différemment ?</h3>
-            <p className="text-slate-600">Rejoignez les milliers de patients qui font confiance à VitaSanté pour leur suivi médical.</p>
+            <p className="text-slate-600">Rejoignez les milliers de patients qui font confiance à MediCare pour leur suivi médical.</p>
           </div>
           <button className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-colors">
             Essayer gratuitement

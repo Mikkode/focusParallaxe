@@ -38,6 +38,7 @@ export default function Home() {
   const parallaxRef = useRef<IParallax>(null!)
   const [currentPage, setCurrentPage] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
 
   // Détection du mobile
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function Home() {
       if (parallaxRef.current) {
         const scrollTop = parallaxRef.current.current / parallaxRef.current.space
         setCurrentPage(Math.round(scrollTop))
+        setScrollY(parallaxRef.current.current)
       }
     }
 
@@ -88,20 +90,44 @@ export default function Home() {
           <HeroSection scrollTo={() => scrollTo(1)} />
         </ParallaxLayer>
 
-        {/* Éléments décoratifs */}
+        {/* Éléments décoratifs flottants */}
+        <ParallaxLayer offset={0} speed={0.2} className="pointer-events-none">
+          <div className="absolute right-[15%] top-[30%] w-24 h-24 rounded-full bg-sky-400 opacity-10 blur-xl"></div>
+          <div className="absolute left-[10%] top-[40%] w-32 h-32 rounded-full bg-blue-300 opacity-10 blur-xl"></div>
+        </ParallaxLayer>
+
+        {/* Éléments décoratifs avec effet parallaxe */}
         <ParallaxLayer offset={0.85} speed={0.3} className="pointer-events-none">
           <div className="absolute right-[10%] w-64 h-64 rounded-full bg-gradient-to-br from-sky-100 to-sky-200 opacity-60 blur-xl"></div>
           <div className="absolute left-[15%] w-48 h-48 rounded-full bg-gradient-to-tr from-slate-100 to-sky-100 opacity-60 blur-xl"></div>
         </ParallaxLayer>
 
-        {/* Section Services */}
-        <ParallaxLayer offset={1} speed={0.2} factor={1} className="bg-white">
+        {/* Particules flottantes médicales */}
+        <ParallaxLayer offset={0.1} speed={0.8} className="pointer-events-none">
+          <div className="absolute left-[20%] top-[20%] w-6 h-6 rounded-full border-2 border-sky-200 opacity-40 animate-float-slow"></div>
+          <div className="absolute right-[25%] top-[35%] w-4 h-4 rounded-full border-2 border-sky-300 opacity-30 animate-float-medium"></div>
+          <div className="absolute left-[40%] top-[60%] w-5 h-5 rounded-full border-2 border-blue-200 opacity-40 animate-float-fast"></div>
+        </ParallaxLayer>
+
+        {/* Section Services avec fond légèrement différent */}
+        <ParallaxLayer offset={1} speed={0.2} factor={1} className="bg-gradient-to-b from-white to-sky-50">
           <ServicesSection />
         </ParallaxLayer>
 
+        {/* Éléments décoratifs pour la section Services */}
+        <ParallaxLayer offset={1.1} speed={0.4} className="pointer-events-none">
+          <div className="absolute right-[5%] w-32 h-32 rounded-full bg-blue-100 opacity-30 blur-lg"></div>
+          <div className="absolute left-[8%] top-[30%] w-24 h-24 rounded-full bg-sky-100 opacity-30 blur-lg"></div>
+        </ParallaxLayer>
+
         {/* Section Tarification */}
-        <ParallaxLayer offset={2} speed={0.1} factor={isMobile ? 1.5 : 1} className="bg-slate-50">
+        <ParallaxLayer offset={2} speed={0.1} factor={isMobile ? 1.5 : 1} className="bg-gradient-to-b from-sky-50 to-slate-50">
           <PricingSection />
+        </ParallaxLayer>
+
+        {/* Éléments décoratifs pour la section Tarification */}
+        <ParallaxLayer offset={2.2} speed={0.3} className="pointer-events-none">
+          <div className="absolute right-[15%] w-40 h-40 rounded-full bg-gradient-radial from-sky-100 to-transparent opacity-40 blur-xl"></div>
         </ParallaxLayer>
 
         {/* Section Témoignages */}
@@ -123,9 +149,15 @@ export default function Home() {
           </div>
         </ParallaxLayer>
 
-        {/* Section Contact */}
-        <ParallaxLayer offset={isMobile ? 4.5 : 4} speed={0.1} factor={1} className="bg-slate-900">
+        {/* Section Contact avec fond dégradé */}
+        <ParallaxLayer offset={isMobile ? 4.5 : 4} speed={0.1} factor={1} className="bg-gradient-to-b from-slate-900 to-slate-800">
           <ContactSection />
+        </ParallaxLayer>
+
+        {/* Éléments décoratifs pour la section Contact */}
+        <ParallaxLayer offset={isMobile ? 4.6 : 4.1} speed={0.4} className="pointer-events-none">
+          <div className="absolute right-[10%] top-[20%] w-48 h-48 rounded-full bg-sky-900 opacity-20 blur-xl"></div>
+          <div className="absolute left-[5%] top-[40%] w-32 h-32 rounded-full bg-blue-900 opacity-20 blur-xl"></div>
         </ParallaxLayer>
 
         {/* Bouton flottant pour remonter en haut */}
