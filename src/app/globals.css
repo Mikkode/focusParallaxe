@@ -71,386 +71,72 @@
   --ring: #8b5cf6;
 }
 
-/* Styles de base */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: var(--font-sans);
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
-body {
-  position: relative;
-}
-
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes shine {
-  0% { transform: translateX(-100%) rotate(30deg); }
-  20%, 100% { transform: translateX(100%) rotate(30deg); }
-}
-
-.shine-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.shine-effect::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  animation: shine 6s infinite;
-}
-
-/* Styles pour le conteneur Parallax */
-.parallax-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Styles pour les sections */
-section {
-  padding: 3rem 0;
-}
-
-@media (min-width: 768px) {
-  section {
-    padding: 6rem 0;
-  }
-}
-
-/* Styles pour les titres */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-@media (min-width: 640px) {
-  h1 {
-    font-size: 3rem;
-    line-height: 3.25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3.75rem;
-    line-height: 4rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
-  }
-}
-
-h2 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-@media (min-width: 640px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  h2 {
-    font-size: 3rem;
-    line-height: 3.25rem;
-  }
-}
-
-/* Styles pour les cartes */
-.card {
-  background-color: var(--card);
-  color: var(--card-foreground);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-/* Styles pour les boutons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  font-weight: 500;
-  height: 2.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  transition: all 0.2s ease;
-}
-
-.btn-primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-}
-
-.btn-secondary {
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
-}
-
-.btn-secondary:hover {
-  opacity: 0.9;
-}
-
-/* Styles pour les témoignages */
-.testimonial-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: var(--card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
-}
-
-/* Styles pour les cartes de prix */
-.pricing-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: var(--card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pricing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
-}
-
-.pricing-card-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--border);
-  background-color: var(--muted);
-}
-
-.pricing-card-content {
-  padding: 1.5rem;
-  flex-grow: 1;
-}
-
-.pricing-card-footer {
-  padding: 1.5rem;
-  background-color: var(--muted);
-  opacity: 0.5;
-}
-
-/* Effet de grille */
-.bg-grid {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-}
-
-/* Conteneur */
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
-/* Amélioration des effets de parallaxe */
-.parallax {
-  perspective: 1000px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-/* Amélioration des sections */
-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 0;
-  position: relative;
-  z-index: 10;
-}
-
-/* Amélioration des titres */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-h1 {
-  font-size: 3.5rem;
-  background: linear-gradient(to right, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-h2 {
-  font-size: 2.5rem;
-}
-
-/* Amélioration des cartes */
-.card {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* Amélioration des boutons */
-button, .btn {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* Ajout de motifs et textures pour enrichir le fond */
-.bg-pattern {
-  background-image: 
-    radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 2px, transparent 0),
-    radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.05) 2px, transparent 0);
-  background-size: 100px 100px;
-}
-
-.bg-noise {
-  position: relative;
-}
-
-.bg-noise::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.6;
-}
-
-/* Effet de flottement pour les éléments décoratifs */
-.floating {
-  animation: floating 6s ease-in-out infinite;
-}
-
-.floating-delay-1 {
-  animation-delay: 1s;
-}
-
-.floating-delay-2 {
-  animation-delay: 2s;
-}
-
-.floating-delay-3 {
-  animation-delay: 3s;
-}
-
-@keyframes floating {
-  0% {
-    transform: translateY(0px);
+/* Animations pour les effets de flottement */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-15px);
   }
-  100% {
-    transform: translateY(0px);
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes d'animation */
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 4s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/* Styles pour les éléments animés au scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+

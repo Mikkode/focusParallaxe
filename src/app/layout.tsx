@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "FocusFlow - Coaching pour entrepreneurs",
-  description: "Débloquez votre potentiel et transformez votre business avec notre coaching personnalisé",
-};
+  title: 'Carrot Santé - Votre santé, notre priorité',
+  description: 'Services de santé personnalisés et accessibles',
+}
 
 export default function RootLayout({
   children,
